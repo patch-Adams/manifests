@@ -7,6 +7,8 @@
   <default revision="master"
            remote="aosp"
            sync-j="4" />
+  <remote name="opengapps" fetch="https://github.com/opengapps/"  />
+  <remote name="pa" fetch="https://github.com/patch-Adams/"  />
 
   <project path="build" name="platform/build" groups="pdk" >
     <copyfile src="core/root.mk" dest="Makefile" />
@@ -62,7 +64,6 @@
   <project path="device/linaro/bootloader/OpenPlatformPkg" name="device/linaro/bootloader/OpenPlatformPkg" />
   <project path="device/linaro/hikey" name="device/linaro/hikey" groups="device,hikey,pdk" />
   <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" groups="device,hikey,pdk" clone-depth="1" />
-  <project path="device/moto/shamu" name="device/moto/shamu" groups="device,shamu,broadcom_pdk,generic_fs,pdk" />
   <project path="device/moto/shamu-kernel" name="device/moto/shamu-kernel" groups="device,shamu,broadcom_pdk,generic_fs,pdk" clone-depth="1" />
   <project path="device/sample" name="device/sample" groups="pdk" />
   <project path="docs/source.android.com" name="platform/docs/source.android.com" groups="pdk-cw-fs,pdk-fs" />
@@ -540,5 +541,15 @@
   <project path="tools/swt" name="platform/tools/swt" groups="notdefault,tools" />
   <project path="tools/test/connectivity" name="platform/tools/test/connectivity" groups="pdk" />
   <project path="tools/tradefederation" name="platform/tools/tradefederation" groups="notdefault,tradefed" />
+  
+  <!--For OpenGapps: -->
+  <project path="vendor/google/build" name="aosp_build" revision="master" remote="opengapps" />
+  <project path="vendor/opengapps/sources/all" name="all" clone-depth="1" revision="master" remote="opengapps" />
+  <!-- If you need other/additional targets, follow the same template: -->
+  <project path="vendor/opengapps/sources/arm" name="arm" clone-depth="1" revision="master" remote="opengapps" />
+  <!-- my device setup -->
+  <project path="device/moto/shamu" name="android_device_moto_shamu" revision="master" remote="pa" />
+  <!-- rarrr! vendor files -->
+  <project path="vendor/moto/" name="vendor_moto" revision="master" remote="pa" />
 
 </manifest>
